@@ -64,6 +64,7 @@ class QiantuSpider(scrapy.Spider):
             infos("title > {}".format(each))
 
         infos('URL > {} ,Total > {}'.format(response.url,len(res)))
+
         pass
 
 # import requests
