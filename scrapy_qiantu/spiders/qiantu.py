@@ -27,15 +27,15 @@ class QiantuSpider(scrapy.Spider):
                       callback=self.parse_detail)
 
 
-        # item_pages = '//div[@class="qt-pagination"]' \
-        #              '//span[@class="cpage"]' \
-        #              '/following-sibling::a[1]/@href'
-        # next_page = response.xpath(item_pages).extract_first()
-        # if next_page:
-        #     infos('telnet next page > {}'.format(next_page))
-        #     yield Request(url=next_page,
-        #                   # meta={"front_image_url": urljoin(response.url, image_url)},
-        #                   callback=self.parse)
+        item_pages = '//div[@class="qt-pagination"]' \
+                     '//span[@class="cpage"]' \
+                     '/following-sibling::a[1]/@href'
+        next_page = response.xpath(item_pages).extract_first()
+        if next_page:
+            infos('telnet ne    xt page > {}'.format(next_page))
+            yield Request(url=next_page,
+                          # meta={"front_image_url": urljoin(response.url, image_url)},
+                          callback=self.parse)
         # else:
         #     infos(">>>>>>>>>>>...the END...未找到NEXT PAGE")
 
@@ -81,4 +81,5 @@ class QiantuSpider(scrapy.Spider):
 #     'Host': 'www.ximalaya.com'
 # }
 # req = requests.get(url,headers = hd)
+#
 # infos(req.text)
